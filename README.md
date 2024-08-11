@@ -1,16 +1,24 @@
-# ukk_rpl_2024
+# Flutter Apps using MySQL Database
 
-A new Flutter project.
+This simple project that can be refrence if you have local project using Flutter & MySQL.
 
-## Getting Started
+This apps using 2 dependency :
+- mysql_client
+- http
 
-This project is a starting point for a Flutter application.
+# Getting Started
+Think your must know !
 
-A few resources to get you started if this is your first Flutter project:
+This Apps using MVC design pattern.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Connection to MySQL
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+final conn = await MySQLConnection.createConnection(
+      host: "10.0.2.2",
+      port: 3306,
+      userName: 'root',
+      password: '',
+      databaseName: "db_edwinfarid_ukk_rpl_2024",
+      secure: false);
+
+  await conn.connect();
