@@ -28,6 +28,7 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
@@ -47,29 +48,77 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             TextFormField(
               keyboardType: TextInputType.text,
               controller: _nimController,
-              decoration: const InputDecoration(labelText: "NIM"),
+              decoration: const InputDecoration(
+                labelText: "NIM",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             TextFormField(
               keyboardType: TextInputType.text,
               controller: _namaController,
-              decoration: const InputDecoration(labelText: "Nama"),
+              decoration: const InputDecoration(
+                labelText: "Nama",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             TextFormField(
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
               controller: _passwordController,
-              decoration: const InputDecoration(labelText: "Password"),
+              decoration: const InputDecoration(
+                labelText: "Password",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             TextFormField(
               keyboardType: TextInputType.text,
               controller: _prodiController,
-              decoration: const InputDecoration(labelText: "Prodi"),
+              decoration: const InputDecoration(
+                labelText: "Prodi",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             ElevatedButton(
               onPressed: () {
@@ -79,7 +128,12 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
                 String prodi = _prodiController.text;
                 widget.controller.create(context, nim, nama, password, prodi);
               },
-              child: const Text("Simpan"),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 94, 163, 220)),
+              child: const Text(
+                "Simpan",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
