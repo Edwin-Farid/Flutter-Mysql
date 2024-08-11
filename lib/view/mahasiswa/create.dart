@@ -31,7 +31,19 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
-          title: const Text("Mahasiswa"),
+          title: const Text(
+            "Mahasiswa",
+            style: TextStyle(color: Colors.white),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back),
+            color: Colors.white,
+          ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 94, 163, 220),
         ),
       ),
       body: Padding(
