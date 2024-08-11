@@ -35,6 +35,11 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
 
   void _deleteMahasiswa(String nim) async {
     await widget.controller.deleteMahasiswa(nim);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Data berhasil di hapus"),
+      ),
+    );
     _refreshMahasiswaList();
   }
 
@@ -57,7 +62,7 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
               onPressed: () {
                 Navigator.pushNamed(context, '/mahasiswa-create');
               },
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               color: Colors.white,
             )
           ],
@@ -80,7 +85,7 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
             );
           } else {
             return ListView.builder(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final mahasiswa = snapshot.data![index];
