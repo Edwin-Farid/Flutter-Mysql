@@ -52,6 +52,15 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           backgroundColor: const Color.fromARGB(255, 94, 163, 220),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/mahasiswa-create');
+              },
+              icon: Icon(Icons.add),
+              color: Colors.white,
+            )
+          ],
         ),
       ),
       body: FutureBuilder(
