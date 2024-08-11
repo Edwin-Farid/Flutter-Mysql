@@ -132,7 +132,7 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
                   backgroundColor: const Color.fromARGB(255, 94, 163, 220)),
               child: const Text(
                 "Simpan",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ),
           ],
