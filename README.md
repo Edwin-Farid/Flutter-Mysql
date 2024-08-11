@@ -13,6 +13,7 @@ This Apps using MVC design pattern.
 
 ## Connection to MySQL
 
+```
 final conn = await MySQLConnection.createConnection(
       host: "10.0.2.2",
       port: 3306,
@@ -22,3 +23,4 @@ final conn = await MySQLConnection.createConnection(
       secure: false);
 
   await conn.connect();
+```
