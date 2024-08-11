@@ -15,8 +15,13 @@ class MahasiswaController {
           content: Text("Data di simpan!"),
         ),
       );
+      Navigator.pushReplacementNamed(context, '/mahasiswa');
     } catch (e) {
-      Navigator.pushReplacementNamed(context, '/login');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Error: $e"),
+        ),
+      );
     }
   }
 
@@ -25,10 +30,11 @@ class MahasiswaController {
     try {
       await model.updateMahasiswa(nim, name, password, prodi);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text("Data Berhasil di perbarui"),
         ),
       );
+      Navigator.pushReplacementNamed(context, '/mahasiswa');
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
