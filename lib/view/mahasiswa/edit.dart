@@ -57,10 +57,23 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
-          title: const Text("Edit Mahasiswa"),
+          title: const Text(
+            "Edit Mahasiswa",
+            style: TextStyle(color: Colors.white),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back),
+            color: Colors.white,
+          ),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 94, 163, 220),
         ),
       ),
       body: Padding(
@@ -71,23 +84,71 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
               controller: TextEditingController(text: widget.nim),
               keyboardType: TextInputType.text,
               readOnly: true,
-              decoration: const InputDecoration(labelText: "NIM"),
+              decoration: const InputDecoration(
+                labelText: "NIM",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             TextFormField(
               controller: _nameController,
               keyboardType: TextInputType.text,
-              decoration: const InputDecoration(labelText: "Name"),
+              decoration: const InputDecoration(
+                labelText: "Name",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             TextFormField(
               controller: _passwordController,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
-              decoration: const InputDecoration(labelText: "Password"),
+              decoration: const InputDecoration(
+                labelText: "Password",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             TextFormField(
               controller: _prodiController,
               keyboardType: TextInputType.text,
-              decoration: const InputDecoration(labelText: "Prodi"),
+              decoration: const InputDecoration(
+                labelText: "Prodi",
+                labelStyle: TextStyle(color: Colors.black87),
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 94, 163, 220),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             ElevatedButton(
               onPressed: () {
@@ -97,7 +158,12 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
                 widget.controller
                     .edit(context, widget.nim, name, password, prodi);
               },
-              child: const Text("Simapn Pembaruan"),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 94, 163, 220)),
+              child: const Text(
+                "Simpan perubahan",
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
             ),
           ],
         ),
