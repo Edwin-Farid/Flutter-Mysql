@@ -67,7 +67,7 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.popAndPushNamed(context, '/mahasiswa');
             },
             icon: const Icon(Icons.arrow_back),
             color: Colors.white,
@@ -159,7 +159,8 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
                     .edit(context, widget.nim, name, password, prodi);
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 94, 163, 220)),
+                backgroundColor: const Color.fromARGB(255, 94, 163, 220),
+              ),
               child: const Text(
                 "Simpan perubahan",
                 style: TextStyle(color: Colors.white, fontSize: 16),

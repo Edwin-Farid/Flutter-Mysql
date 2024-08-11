@@ -38,7 +38,7 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.popAndPushNamed(context, '/mahasiswa');
             },
             icon: const Icon(Icons.arrow_back),
             color: Colors.white,
@@ -129,7 +129,8 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
                 widget.controller.create(context, nim, nama, password, prodi);
               },
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 94, 163, 220)),
+                backgroundColor: const Color.fromARGB(255, 94, 163, 220),
+              ),
               child: const Text(
                 "Simpan",
                 style: TextStyle(color: Colors.white, fontSize: 16),
