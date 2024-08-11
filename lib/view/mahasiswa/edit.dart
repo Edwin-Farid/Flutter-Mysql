@@ -14,7 +14,6 @@ class MahasiswaEdit extends StatefulWidget {
 class _MahasiswaEditState extends State<MahasiswaEdit> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _nameController;
-  late TextEditingController _usernameController;
   late TextEditingController _passwordController;
   late TextEditingController _prodiController;
   bool _isLoading = true;
@@ -23,7 +22,6 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
   void initState() {
     super.initState();
     _nameController = TextEditingController();
-    _usernameController = TextEditingController();
     _passwordController = TextEditingController();
     _prodiController = TextEditingController();
     _loadMahasiswaData();
@@ -33,7 +31,6 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
     final mahasiswa = await widget.controller.getMahasiswa(widget.nim);
     if (mahasiswa != null) {
       _nameController = TextEditingController(text: mahasiswa['name']);
-      _usernameController = TextEditingController(text: mahasiswa['username']);
       _passwordController = TextEditingController(text: mahasiswa['password']);
       _prodiController = TextEditingController(text: mahasiswa['prodi']);
     } else {
@@ -52,7 +49,6 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
   @override
   void dispose() {
     _nameController.dispose();
-    _usernameController.dispose();
     _passwordController.dispose();
     _prodiController.dispose();
     super.dispose();
@@ -83,11 +79,6 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
               decoration: const InputDecoration(labelText: "Name"),
             ),
             TextFormField(
-              controller: _usernameController,
-              keyboardType: TextInputType.text,
-              decoration: const InputDecoration(labelText: "Username"),
-            ),
-            TextFormField(
               controller: _passwordController,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
@@ -101,11 +92,10 @@ class _MahasiswaEditState extends State<MahasiswaEdit> {
             ElevatedButton(
               onPressed: () {
                 String name = _nameController.text;
-                String username = _usernameController.text;
                 String password = _passwordController.text;
                 String prodi = _prodiController.text;
                 widget.controller
-                    .edit(context, widget.nim, name, username, password, prodi);
+                    .edit(context, widget.nim, name, password, prodi);
               },
               child: const Text("Simapn Pembaruan"),
             ),

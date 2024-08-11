@@ -41,17 +41,24 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
-          title: Text("Mahasiswa"),
+          title: const Text(
+            "List Mahasiswa",
+            style: TextStyle(color: Colors.white),
+          ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 94, 163, 220),
         ),
       ),
       body: FutureBuilder(
         future: _mahasiswaListFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -59,38 +66,43 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
               child: Text("Error: ${snapshot.error}"),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text("Data tidak ada"),
             );
           } else {
             return ListView.builder(
+              padding: EdgeInsets.all(16),
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final mahasiswa = snapshot.data![index];
                 return Card(
-                  margin: EdgeInsets.all(8.0),
+                  color: const Color.fromARGB(255, 246, 246, 246),
+                  elevation: 0,
+                  margin: const EdgeInsets.all(8.0),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "NIM: ${mahasiswa['nim']}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
                         Text(
                           "Name: ${mahasiswa['name']}",
-                          style: TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 14),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 4,
                         ),
                         Text(
                           "Prodi: ${mahasiswa['prodi']}",
-                          style: TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 14),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -99,15 +111,28 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
                               onPressed: () {
                                 _editMahasiswa(mahasiswa['nim']!);
                               },
-                              child: Text("Edit"),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 94, 163, 220)),
+                              child: const Text(
+                                "Edit",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 6,
                             ),
                             ElevatedButton(
                               onPressed: () {
                                 _deleteMahasiswa(mahasiswa['nim']!);
                               },
-                              child: Text("Hapus"),
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red),
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 236, 82, 71)),
+                              child: const Text(
+                                "Hapus",
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ],
                         )

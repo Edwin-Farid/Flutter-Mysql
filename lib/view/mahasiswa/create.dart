@@ -13,7 +13,6 @@ class MahasiswaCreate extends StatefulWidget {
 class _MahasiswaCreateState extends State<MahasiswaCreate> {
   final _nimController = TextEditingController();
   final _namaController = TextEditingController();
-  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _prodiController = TextEditingController();
 
@@ -21,7 +20,6 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
   void dispose() {
     _nimController.dispose();
     _namaController.dispose();
-    _usernameController.dispose();
     _passwordController.dispose();
     _prodiController.dispose();
     super.dispose();
@@ -51,11 +49,6 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
               decoration: const InputDecoration(labelText: "Nama"),
             ),
             TextFormField(
-              keyboardType: TextInputType.text,
-              controller: _usernameController,
-              decoration: const InputDecoration(labelText: "Username"),
-            ),
-            TextFormField(
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
               controller: _passwordController,
@@ -70,11 +63,9 @@ class _MahasiswaCreateState extends State<MahasiswaCreate> {
               onPressed: () {
                 String nim = _nimController.text;
                 String nama = _namaController.text;
-                String username = _usernameController.text;
                 String password = _passwordController.text;
                 String prodi = _prodiController.text;
-                widget.controller
-                    .create(context, nim, nama, username, password, prodi);
+                widget.controller.create(context, nim, nama, password, prodi);
               },
               child: const Text("Simpan"),
             ),

@@ -5,28 +5,21 @@ class MahasiswaModel {
 
   MahasiswaModel(this.conn);
 
-  Future<void> createMahasiswa(String nim, String nama, String username,
-      String password, String prodi) async {
+  Future<void> createMahasiswa(
+      String nim, String nama, String password, String prodi) async {
     await conn.execute(
-      "INSERT INTO mahasiswa (nim, nama, username, password, prodi) VALUE (:nim, :nama, :username, :password, :prodi)",
-      {
-        "nim": nim,
-        "nama": nama,
-        "username": username,
-        "password": password,
-        "prodi": prodi
-      },
+      "INSERT INTO mahasiswa (nim, nama, password, prodi) VALUE (:nim, :nama, :password, :prodi)",
+      {"nim": nim, "nama": nama, "password": password, "prodi": prodi},
     );
   }
 
-  Future<void> updateMahasiswa(String nim, String nama, String username,
-      String password, String prodi) async {
+  Future<void> updateMahasiswa(
+      String nim, String nama, String password, String prodi) async {
     await conn.execute(
-      "UPDATE mahasiswa SET nama = :nama, username = :username, password = :password, prodi = :prodi WHERE nim = :nim",
+      "UPDATE mahasiswa SET nama = :nama, password = :password, prodi = :prodi WHERE nim = :nim",
       {
         "nim": nim,
         "nama": nama,
-        "username": username,
         "password": password,
         "prodi": prodi,
       },
@@ -60,9 +53,8 @@ class MahasiswaModel {
       return {
         'nim': row.colAt(0) ?? '',
         'name': row.colAt(1) ?? '',
-        'username': row.colAt(2) ?? '',
-        'password': row.colAt(3) ?? '',
-        'prodi': row.colAt(4) ?? '',
+        'password': row.colAt(2) ?? '',
+        'prodi': row.colAt(3) ?? '',
       };
     }
 

@@ -7,9 +7,9 @@ class MahasiswaController {
   MahasiswaController(this.model);
 
   Future<void> create(BuildContext context, String nim, String nama,
-      String username, String password, String prodi) async {
+      String password, String prodi) async {
     try {
-      await model.createMahasiswa(nim, nama, username, password, prodi);
+      await model.createMahasiswa(nim, nama, password, prodi);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("Data di simpan!"),
@@ -21,9 +21,9 @@ class MahasiswaController {
   }
 
   Future<void> edit(BuildContext context, String nim, String name,
-      String username, String password, String prodi) async {
+      String password, String prodi) async {
     try {
-      await model.updateMahasiswa(nim, name, username, password, prodi);
+      await model.updateMahasiswa(nim, name, password, prodi);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Data Berhasil di perbarui"),
