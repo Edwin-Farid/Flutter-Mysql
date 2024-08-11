@@ -18,7 +18,7 @@ final conn = await MySQLConnection.createConnection(
       port: 3306,
       userName: 'root',
       password: '',
-      databaseName: "db_edwinfarid_ukk_rpl_2024",
+      databaseName: "your_db",
       secure: false);
 
   await conn.connect();
