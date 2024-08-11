@@ -24,15 +24,20 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
-          title: const Text("Login Page"),
+          title: const Text(
+            "Login Page",
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
+          backgroundColor: const Color.fromARGB(255, 94, 163, 220),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             const Text("Selamat Datang"),
@@ -42,7 +47,14 @@ class _LoginViewState extends State<LoginView> {
                 keyboardType: TextInputType.number,
                 controller: _nimController,
                 decoration: const InputDecoration(
-                  label: Text("NIM"),
+                  labelText: "NIM",
+                  labelStyle: TextStyle(color: Colors.black87),
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 94, 163, 220),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -53,9 +65,19 @@ class _LoginViewState extends State<LoginView> {
                 obscureText: true,
                 controller: _passwordController,
                 decoration: const InputDecoration(
-                  label: Text("Password"),
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.black87),
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromARGB(255, 94, 163, 220),
+                    ),
+                  ),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 12,
             ),
             ElevatedButton(
               onPressed: () {
@@ -63,7 +85,13 @@ class _LoginViewState extends State<LoginView> {
                 String password = _passwordController.text;
                 widget.controller.login(context, nim, password);
               },
-              child: const Text("Login"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 94, 163, 220),
+              ),
+              child: const Text(
+                "Login",
+                style: TextStyle(color: Colors.white, fontSize: 16),
+              ),
             )
           ],
         ),

@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           );
         }
       },
-      initialRoute: '/mahasiswa',
+      initialRoute: '/',
     );
     return materialApp;
   }
