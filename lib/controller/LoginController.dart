@@ -10,7 +10,7 @@ class LoginController {
     bool isAuthenticated = await model.authentication(nim, password);
 
     if (isAuthenticated) {
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/mahasiswa');
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
