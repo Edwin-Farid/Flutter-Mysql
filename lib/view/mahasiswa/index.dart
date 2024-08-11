@@ -26,7 +26,7 @@ class _MahasiswaIndexState extends State<MahasiswaIndex> {
   }
 
   void _editMahasiswa(String nim) {
-    Navigator.pushReplacementNamed(
+    Navigator.pushNamed(
       context,
       '/mahasiswa-edit',
       arguments: {'nim': nim},
